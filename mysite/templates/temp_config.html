@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+	<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+	<h1>{% block head %}{% endblock %}</h1>
+	<hr>
+	<table border="0cd" width="95%" style="">
+		<tr>
+			<td width="50%" valign:top>
+				<div>{% block left_content %}{% endblock %}</div>
+			</td>
+			<td width="50%">
+				<div>{% block right_content %}{% endblock %}</div>
+			</td>
+		</tr>
+	</table>
+
+
+
+	{% block footer %}
+	<hr>
+	<p>Thanks for visiting my site.</p>
+	{% endblock %}
+</body>
+</html>

@@ -1,0 +1,58 @@
+!SESSION 2014-10-20 14:08:59.457 -----------------------------------------------
+eclipse.buildId=4.4.0.I20131030-2000
+java.version=1.7.0_25
+java.vendor=SAP AG
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY com.perforce.team.core 2 0 2014-10-20 14:09:35.999
+!MESSAGE unable to get manifest version attribute: Not running from jar file: bundleresource://837.fwk785238630:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 2 0 2014-10-20 14:09:36.002
+!MESSAGE unable to get manifest date attribute: Not running from jar file: bundleresource://837.fwk785238630:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 1 0 2014-10-20 14:09:36.003
+!MESSAGE P4Java server factory loaded; version: Internal 2010.1 Perforce Development; date: unknown
+
+!ENTRY com.perforce.team.core 1 0 2014-10-20 14:09:36.003
+!MESSAGE Using default charset: windows-1252; JVM charset: windows-1252
+
+!ENTRY com.perforce.team.core 1 0 2014-10-20 14:09:36.005
+!MESSAGE Checking this Java for symbolic link support...
+
+!ENTRY com.perforce.team.core 1 0 2014-10-20 14:09:36.031
+!MESSAGE It seems this Java supports symbolic links.
+
+!ENTRY com.perforce.team.core 1 0 2014-10-20 14:09:36.031
+!MESSAGE Symbolic link support at the OS level will be determined at runtime...
+
+!ENTRY com.perforce.team.core 1 0 2014-10-20 14:09:36.032
+!MESSAGE initializing system file command helper class: java.io.File
+
+!ENTRY com.perforce.team.core 1 0 2014-10-20 14:09:36.032
+!MESSAGE Using default RPC system file command helper: com.perforce.p4java.impl.mapbased.rpc.sys.helper.RpcSystemFileCommandsHelper
+
+!ENTRY com.perforce.team.core 1 0 2014-10-20 14:09:36.032
+!MESSAGE setting RPC system file helper to class com.perforce.team.core.p4java.P4JavaSysFileCommandsHelper
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-10-20 14:09:37.483
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-10-20 14:09:37.483
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\i076639'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.jobs 4 2 2014-10-20 14:09:44.095
+!MESSAGE An internal error occurred during: "Activity Monitor Job".
+
+!ENTRY org.eclipse.core.jobs 4 2 2014-10-20 14:09:47.271
+!MESSAGE An internal error occurred during: "Git Repository Change Scanner".

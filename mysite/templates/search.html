@@ -1,0 +1,54 @@
+{% extends "temp_search_with_form.html" %}
+
+{% block title %}SAP Context Search{% endblock %}
+
+{% block head %}Test SPHINX Engine{% endblock %}
+
+{% block form %}
+<form method="get" class="well form-search form-inline center">
+	{% csrf_token %}
+	Search Word:<input name='q'></input>
+	<button type="submit">search</button>
+</ul>
+</form>
+{% endblock %}
+
+{% block result %}
+
+{% if query %}
+<style>
+.highlighted {color:red;}
+a:link{text-decoration: none; color:blue;}
+a:active{text-decoration: blink;}
+a:hover{text-decoration: underline;}
+{#a:visited{text-decoration: none; color:red;}#}
+li {margin: 1000; padding: 0; list-style: none;}
+</style>
+
+    <p>Your search for "{{query}}" returned results: {{total}}</p>
+    <hr />
+    {% for result in results.object_list %}
+        <p class="top20">&bull; <a href="{{ result.url }}">{{ result.title|safe }}</a></p>
+        <p class="sresult">{{ result.content|safe }}</p>
+        <hr>
+    {% empty %}
+        <div class="alert-message info">
+            <p>No results.</p>
+        </div>
+    {% endfor %}
+    {% if results %}
+            <div class="pager">
+                <ul>
+                    {% if results.has_previous %}
+                        <li><a href="?q={{ query }}&amp;page={{ results.previous_page_number }}">&larr; previous page</a></li>
+                    {% endif %}
+                    <li>Page {{ results.number }} from {{ results.paginator.num_pages }}</li>
+                    {% if results.has_next %}
+                        <li><a href="?q={{ query }}&amp;page={{ results.next_page_number }}">next page &rarr;</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+    {% endif %}
+{% endif %}
+
+{% endblock %}

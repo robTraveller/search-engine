@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% endblock %}</title>
+	<style type="text/css">
+	p.sresult{
+		height: 90px;
+		border: 1px solid dashed;
+		padding: 10px;
+		overflow: hidden;
+		text-overflow:ellipsis;
+	}
+	</style>
+</head>
+<body>
+
+	<div style="width:50%;">
+		<h1>{% block head %}{% endblock %}</h1>
+		{% block form %}
+		{% endblock %}
+		<hr>
+		<h2>Search Result Here:</h2>
+		{% block result %}{% endblock %}
+		{% block footer %}
+		<hr>
+		<p>Thanks for visiting my site.</p>
+		{% endblock %}
+	</div>
+
+</body>
+</html>

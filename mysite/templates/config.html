@@ -1,0 +1,113 @@
+{# % extends "temp_config.html" % #}
+<title>SAP search configuration - B1 knowledge search innovation </title>
+<h2>{% block head %}SAP Knowledge Repository:{% endblock %}</h2>
+<head>
+<script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+<!-- https://docs.djangoproject.com/en/dev/ref/contrib/csrf/#ajax 
+http://stackoverflow.com/questions/5100539/django-csrf-check-failing-with-an-ajax-post-request -->
+
+function send_request(){
+$.ajax({
+	url: '/search/',
+	type: 'POST', //this is the default though, you don't actually need to always mention it
+	data: {u_id : $("input[name='u_id']").val()
+			, u_pwd : $("input[name='u_pwd']").val()
+			, csrfmiddlewaretoken: '{{ csrf_token }}'},
+	success: function(data) {
+	<!--alert('test ajax');		alert(data);-->
+    },
+    failure: function(data) { 
+        <!--alert('Got an error dude');-->
+    }
+}); 
+}
+</script>
+</head>
+<body>
+{% block content %}
+	<table border="0">
+		<tr>
+			<td colspan="1"><label>Domain User Id:	</label></td>
+			<td colspan="2"><input type="text" name="u_id"></input></td>
+			<td colspan="1"><label>Domain Password:</label></td>
+			<td colspan="2"><input type="password" name="u_pwd"></input></td>
+		</tr>
+		<tr>
+			<!-- <td colspan="1"><button type="submit" width = "100" >search</button></td> -->
+			<input type="button" onclick="send_request();" value="Request crawling" /><br/>
+		</tr>
+		<tr>
+			<!-- <td colspan='1'><input type ='button' onclick="Dajaxice.example.dajaxice_example -->
+		</tr>
+	</table>
+{% endblock %}
+<hr>
+{% block searchPath %}
+<form action="." method="POST">
+	{% csrf_token %}
+	<table border="0">
+		<tr>
+			<td colspan="1"><label>search path:</label></td>
+			<td colspan="6"><textarea cols="150" rows="1" name="s_path"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="6"><button type="submit" width = "100" >Add</button></td>
+		</tr>
+	</table>
+	
+</form>
+{% endblock %}
+<hr>
+{% block searchList %}
+<p> Knowledge Repository List: </p>
+	{% if s_list %}
+	<ul>
+	<table>
+		<tr>
+			<td>Delete</td>
+			<td></td>
+			<td>id</td>
+			<td>url</td>
+			<td>Last error</td>
+			<td>raw size</td>
+			<td>craw size</td>
+			<td>standard rate</td>
+			<td>status</td>
+		</tr>
+		<tb>
+		{% for path in s_list %}
+		<form action="delete" method='POST'>
+		{% csrf_token %}
+		<tr>
+			<td> <input type='submit' value='X'> </td>
+			<td> <input type = 'hidden' name = 'd_id' value ={{ path.id }}></input></td>
+			<td> {{ path.id }} </td>
+			<td style="width: 50%;"> <a href= {{ path.url }}> {{ path.url }} </a> </td>
+			<td> {{ path.error_code }}</td>
+			<td> {{ path.raw_size }} k</td>
+			<td> {{ path.craw_size}} k</td>
+			<td> {{ path.standard_rate }}</td>
+			<td>Enable</td>
+		</tr>
+		</form>
+		{% endfor %}
+		</tb>
+	</table>
+	</ul>
+		<!--{% if s_list %}
+			<div class="pager">
+				<ul>
+					{% if s_list.has_previous %}
+						<li><a href="?q={{ query }}&amp;page={{ s_list.previous_page_number }}">&larr; previous page</a></li>
+					{% endif %}
+					<li>Page {{ s_list.number }} from {{ s_list.paginator.num_pages }}</li>
+					{% if s_list.has_next %}
+						<li><a href="?q={{ query }}&amp;page={{ s_list.next_page_number }}">next page &rarr;</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		{% endif %}-->
+	{% endif %}
+{% endblock %}
+</body>

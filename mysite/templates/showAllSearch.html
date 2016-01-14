@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Search History{% endblock %}
+
+{% block head %}Search History{% endblock %}
+{% block content %}
+<p> hello </p>
+{% if s_list %}
+<ul>
+<table>
+	<th>
+		<tr>
+			<td>user</td>
+			<td>path</td>
+			<td>create time</td>
+			<td>modify time</td>
+		</tr>
+	</th>
+	<tb>
+	{% for search in s_list %}
+	<tr>
+		<td>{{ search.k_uid }} </td>
+		<td>{{ search.k_path }} </td>
+		<td>{{ search.k_createtime }}</td>
+		<td>{{ search.k_modifytime }}</td>
+	</tr>
+	{% endfor %}
+	</tb>
+</table>
+</ul>
+{% else %}
+<p>No search history found</p>
+{% endif %}
+{% endblock %}
